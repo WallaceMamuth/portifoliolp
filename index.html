@@ -120,52 +120,59 @@
   </section>
   
 
-
-  <!-- Seção de Vídeos -->
+<!-- Seção de Vídeos -->
 <section class="py-12 bg-white px-6 md:px-12">
-    <h2 class="text-3xl font-bold text-center mb-8" data-aos="fade-up">Vídeos em Destaque</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
-    
-      <!-- Vídeo 1 -->
-      <div class="video-container relative rounded-xl shadow overflow-hidden cursor-pointer aspect-w-16 aspect-h-9" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000" data-video-id="sc1RIX0RZBo">
-        <img src="https://img.youtube.com/vi/sc1RIX0RZBo/hqdefault.jpg" alt="Thumb Vídeo 1" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-          <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </div>
-      </div>
-    
-      <!-- Vídeo 2 -->
-      <div class="video-container relative rounded-xl shadow overflow-hidden cursor-pointer aspect-w-16 aspect-h-9" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000" data-video-id="3JZ_D3ELwOQ">
-        <img src="https://img.youtube.com/vi/3JZ_D3ELwOQ/hqdefault.jpg" alt="Thumb Vídeo 2" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-          <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </div>
-      </div>
-    
-    </div>
-  </section>
+  <h2 class="text-3xl font-bold text-center mb-8" data-aos="fade-up">Vídeos em Destaque</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
   
-  <!-- Script para ativar o vídeo ao clique -->
-  <script>
-    document.querySelectorAll('.video-container').forEach(container => {
-      container.addEventListener('click', () => {
-        const videoId = container.dataset.videoId;
-        const iframe = document.createElement('iframe');
-        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-        iframe.setAttribute('frameborder', '0');
-        iframe.setAttribute('allowfullscreen', '');
-        iframe.setAttribute('loading', 'lazy');
-        iframe.setAttribute('title', 'Vídeo YouTube');
-        iframe.className = 'w-full h-full rounded-xl';
-        container.innerHTML = ''; // limpa thumbnail
-        container.appendChild(iframe);
-      });
-    });
-  </script>
+    <!-- Vídeo 1 -->
+    <div class="video-container relative rounded-xl shadow overflow-hidden cursor-pointer aspect-w-16 aspect-h-9" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000" data-video-id="sc1RIX0RZBo">
+      <img src="https://img.youtube.com/vi/sc1RIX0RZBo/hqdefault.jpg" alt="Thumb Vídeo 1" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center play-btn">
+        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+      </div>
+      <!-- Container do iframe, inicialmente oculto -->
+      <div class="absolute inset-0 hidden video-player">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/sc1RIX0RZBo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="w-full h-full"></iframe>
+      </div>
+    </div>
+  
+    <!-- Vídeo 2 -->
+    <div class="video-container relative rounded-xl shadow overflow-hidden cursor-pointer aspect-w-16 aspect-h-9" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000" data-video-id="3JZ_D3ELwOQ">
+      <img src="https://img.youtube.com/vi/3JZ_D3ELwOQ/hqdefault.jpg" alt="Thumb Vídeo 2" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center play-btn">
+        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+      </div>
+      <!-- Container do iframe, inicialmente oculto -->
+      <div class="absolute inset-0 hidden video-player">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/3JZ_D3ELwOQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="w-full h-full"></iframe>
+      </div>
+    </div>
+  
+  </div>
+</section>
+
+<!-- Script para ativar o vídeo ao clique -->
+<script>
+document.querySelectorAll('.video-container').forEach(container => {
+  container.addEventListener('click', () => {
+    // Encontra o iframe dentro do contêiner
+    const videoPlayer = container.querySelector('.video-player');
+    const playButton = container.querySelector('.play-btn');
+
+    // Se o player não estiver visível, exibe e esconde o botão de play
+    if (videoPlayer && playButton) {
+      videoPlayer.classList.remove('hidden'); // Mostra o player
+      playButton.classList.add('hidden'); // Esconde o botão de play
+    }
+  });
+});
+</script>
+
   
 
 <!-- Seção de Instagram -->
