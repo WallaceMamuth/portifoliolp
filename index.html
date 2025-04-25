@@ -22,37 +22,40 @@
   
   <!-- Incluir o animate.css para animações -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
   
 </head>
 <body class="bg-white text-gray-800 font-sans">
+<!-- Header hero estiloso e responsivo -->
+<section class="relative bg-gradient-to-r from-pink-100 via-purple-100 to-blue-100 py-12 px-4 sm:px-8 md:py-20">
+  <div class="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-10 sm:gap-14 md:gap-20">
 
-    <section class="bg-gradient-to-br from-pink-400 to-purple-500 text-white text-center p-6 md:p-10 relative">
-    
-      
-        <div class="max-w-5xl mx-auto flex flex-col-reverse md:flex-row items-center justify-center gap-10 md:gap-16 mt-12 md:mt-0">
-            <!-- Texto -->
-            <div class="text-center md:text-left space-y-4 animate__animated animate__fadeIn animate__delay-1s">
-                <h1 class="text-4xl sm:text-5xl font-bold leading-tight">
-                    <a href="https://www.instagram.com/watechevoce/" target="_blank" class="hover:text-gray-200">
-                        @WATech
-                    </a>
-                </h1>
-                <p class="text-base sm:text-lg md:text-xl mb-4 max-w-md mx-auto md:mx-0">Influencer de lifestyle, moda e viagens ✨</p>
-                <a href="https://wa.me/5522999741139"
-                   class="inline-block bg-white text-pink-600 px-6 py-3 rounded-lg shadow-lg text-base sm:text-lg font-semibold transition-all duration-300 hover:bg-pink-600 hover:text-white"
-                   target="_blank">
-                    Entre em contato
-                </a>
-            </div>
-        
-            <!-- Foto -->
-            <div class="relative animate__animated animate__fadeInRight animate__delay-1s">
-                <img src="assets/img/perfil.avif" alt="Foto do Influencer"
-                     class="rounded-full w-32 h-32 sm:w-40 sm:h-40 md:w-60 md:h-60 object-cover border-4 border-white shadow-lg transform transition duration-500 hover:scale-110 hover:shadow-xl hover:z-10" />
-            </div>
-        </div>
-    </section>
-    
+    <!-- Texto -->
+    <div class="w-full md:w-1/2 text-center md:text-left space-y-6 animate__animated animate__fadeInLeft animate__slow">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-gray-800">
+        <a href="https://www.instagram.com/watechevoce/" target="_blank" class="hover:text-pink-600 transition-colors duration-300">
+          @WATech
+        </a>
+      </h1>
+      <p class="text-base sm:text-lg md:text-xl text-gray-700 max-w-md mx-auto md:mx-0">
+        Influencer de lifestyle, moda e viagens ✨
+      </p>
+      <a href="https://wa.me/5522999741139"
+         class="inline-block bg-pink-500 text-white px-5 py-3 rounded-full shadow-md text-sm sm:text-base font-semibold transition-all duration-300 hover:bg-pink-600 hover:scale-105">
+        Entre em contato
+      </a>
+    </div>
+
+    <!-- Foto -->
+    <div class="w-full md:w-1/2 flex justify-center animate__animated animate__fadeInRight animate__slow">
+      <img src="assets/img/perfil.avif" alt="Foto do Influencer"
+           class="w-36 h-36 sm:w-44 sm:h-44 md:w-64 md:h-64 object-cover rounded-full shadow-xl transition-transform duration-500 hover:scale-105" />
+    </div>
+
+  </div>
+</section>
+
       
       
   
@@ -67,27 +70,26 @@
       Compartilho meu dia a dia com mais de 100 mil seguidores! Trabalho com marcas incríveis e levo autenticidade, estilo e energia positiva em tudo que faço.
     </p>
 
-<!-- Redes sociais -->
+<!-- Redes sociais com ícones reais e destaque -->
 <div class="flex flex-wrap justify-center gap-4 mt-6 animate__animated animate__fadeIn animate__delay-2s">
-    <a href="#" target="_blank" class="hover:text-gray-200 transition-colors duration-300">
-        <i data-lucide="instagram" class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"></i>
-    </a>
-    <a href="#" target="_blank" class="hover:text-gray-200 transition-colors duration-300">
-        <i data-lucide="facebook" class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"></i>
-    </a>
-    <a href="#" target="_blank" class="hover:text-gray-200 transition-colors duration-300">
-        <i data-lucide="message-circle" class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"></i>
-    </a>
-    <a href="#" target="_blank" class="hover:text-gray-200 transition-colors duration-300">
-        <i data-lucide="music" class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"></i>
-    </a>
-    <a href="#" target="_blank" class="hover:text-gray-200 transition-colors duration-300">
-        <i data-lucide="star" class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"></i>
-    </a>
-    <a href="#" target="_blank" class="hover:text-gray-200 transition-colors duration-300">
-        <i data-lucide="twitter" class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"></i>
-    </a>
+  <a href="#" target="_blank" class="transition-all duration-300 transform hover:scale-125 hover:text-pink-500">
+    <i class="fab fa-instagram text-3xl"></i>
+  </a>
+  <a href="#" target="_blank" class="transition-all duration-300 transform hover:scale-125 hover:text-black">
+    <i class="fab fa-tiktok text-3xl"></i>
+  </a>
+  <a href="#" target="_blank" class="transition-all duration-300 transform hover:scale-125 hover:text-orange-400">
+    <i class="fas fa-video text-3xl"></i> <!-- Pode substituir por ícone do Kwai (não tem oficial) -->
+  </a>
+  <a href="#" target="_blank" class="transition-all duration-300 transform hover:scale-125 hover:text-blue-600">
+    <i class="fab fa-facebook text-3xl"></i>
+  </a>
+  <a href="#" target="_blank" class="transition-all duration-300 transform hover:scale-125 hover:text-sky-400">
+    <i class="fab fa-twitter text-3xl"></i>
+  </a>
 </div>
+
+
 
 </section>
 
