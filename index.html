@@ -442,33 +442,36 @@
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
   
     <!-- Vídeo 1 -->
-    <div class="video-container relative rounded-xl shadow overflow-hidden cursor-pointer aspect-w-16 aspect-h-9" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000" data-video-id="sc1RIX0RZBo">
-      <img src="https://img.youtube.com/vi/sc1RIX0RZBo/hqdefault.jpg" alt="Thumb Vídeo 1" class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center play-btn">
-        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M8 5v14l11-7z" />
-        </svg>
-      </div>
-      <!-- Container do iframe, inicialmente oculto -->
-      <div class="absolute inset-0 hidden video-player">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/sc1RIX0RZBo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="w-full h-full"></iframe>
+    <div class="video-container group relative rounded-xl shadow-2xl overflow-hidden cursor-pointer" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
+      <div class="relative w-full pb-[56.25%]"> <!-- Aspect Ratio -->
+        <img src="https://img.youtube.com/vi/sc1RIX0RZBo/hqdefault.jpg" alt="Thumb Vídeo 1" class="absolute top-0 left-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center play-btn">
+          <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </div>
+        <!-- Video player precisa ocupar todo o espaço -->
+        <div class="video-player absolute top-0 left-0 w-full h-full hidden">
+          <iframe src="https://www.youtube.com/embed/sc1RIX0RZBo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="w-full h-full"></iframe>
+        </div>
       </div>
     </div>
-  
+
     <!-- Vídeo 2 -->
-    <div class="video-container relative rounded-xl shadow overflow-hidden cursor-pointer aspect-w-16 aspect-h-9" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000" data-video-id="3JZ_D3ELwOQ">
-      <img src="https://img.youtube.com/vi/3JZ_D3ELwOQ/hqdefault.jpg" alt="Thumb Vídeo 2" class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center play-btn">
-        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M8 5v14l11-7z" />
-        </svg>
-      </div>
-      <!-- Container do iframe, inicialmente oculto -->
-      <div class="absolute inset-0 hidden video-player">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/3JZ_D3ELwOQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="w-full h-full"></iframe>
+    <div class="video-container group relative rounded-xl shadow-2xl overflow-hidden cursor-pointer" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+      <div class="relative w-full pb-[56.25%]">
+        <img src="https://img.youtube.com/vi/3JZ_D3ELwOQ/hqdefault.jpg" alt="Thumb Vídeo 2" class="absolute top-0 left-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center play-btn">
+          <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </div>
+        <div class="video-player absolute top-0 left-0 w-full h-full hidden">
+          <iframe src="https://www.youtube.com/embed/3JZ_D3ELwOQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="w-full h-full"></iframe>
+        </div>
       </div>
     </div>
-  
+
   </div>
 </section>
 
@@ -476,14 +479,12 @@
 <script>
 document.querySelectorAll('.video-container').forEach(container => {
   container.addEventListener('click', () => {
-    // Encontra o iframe dentro do contêiner
     const videoPlayer = container.querySelector('.video-player');
     const playButton = container.querySelector('.play-btn');
 
-    // Se o player não estiver visível, exibe e esconde o botão de play
     if (videoPlayer && playButton) {
-      videoPlayer.classList.remove('hidden'); // Mostra o player
-      playButton.classList.add('hidden'); // Esconde o botão de play
+      videoPlayer.classList.remove('hidden');
+      playButton.classList.add('hidden');
     }
   });
 });
