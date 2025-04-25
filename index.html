@@ -177,47 +177,28 @@ document.querySelectorAll('.video-container').forEach(container => {
 
 <!-- Seção de Instagram -->
 <section id="instagram-post" class="py-12 bg-white px-6 md:px-12">
-    <h2 class="text-3xl font-bold text-center mb-8" data-aos="fade-up">Confira nosso post no Instagram</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
-  
-      <!-- Post 1 -->
-      <div class="insta-container relative rounded-xl shadow overflow-hidden cursor-pointer aspect-w-16 aspect-h-9" data-url="https://www.instagram.com/reel/DI22kizqeNK/?utm_source=ig_embed" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
-        <img src="assets/img/insta1.jpg" alt="Preview do Instagram" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-          <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </div>
-      </div>
-  
-      <!-- Post 2 -->
-      <div class="insta-container relative rounded-xl shadow overflow-hidden cursor-pointer aspect-w-16 aspect-h-9" data-url="https://www.instagram.com/reel/DI2iXq2KdEk/?utm_source=ig_embed" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
-        <img src="assets/img/insta2.jpg" alt="Preview do Instagram" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-          <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </div>
-      </div>
-  
+  <h2 class="text-3xl font-bold text-center mb-8" data-aos="fade-up">Confira nosso post no Instagram</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
+
+    <!-- Post 1 -->
+    <div class="insta-container relative rounded-xl shadow overflow-hidden cursor-pointer aspect-w-16 aspect-h-9" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
+      <blockquote class="instagram-media w-full" data-instgrm-permalink="https://www.instagram.com/reel/DI22kizqeNK/?utm_source=ig_embed" data-instgrm-version="14">
+        <a href="https://www.instagram.com/reel/DI22kizqeNK/?utm_source=ig_embed" target="_blank">Veja o post no Instagram</a>
+      </blockquote>
     </div>
+
+    <!-- Post 2 -->
+    <div class="insta-container relative rounded-xl shadow overflow-hidden cursor-pointer aspect-w-16 aspect-h-9" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+      <blockquote class="instagram-media w-full" data-instgrm-permalink="https://www.instagram.com/reel/DI2iXq2KdEk/?utm_source=ig_embed" data-instgrm-version="14">
+        <a href="https://www.instagram.com/reel/DI2iXq2KdEk/?utm_source=ig_embed" target="_blank">Veja o post no Instagram</a>
+      </blockquote>
+    </div>
+
+  </div>
 </section>
 
-<!-- Script para ativar embed Instagram ao clique -->
-<script>
-  document.querySelectorAll('.insta-container').forEach(container => {
-    container.addEventListener('click', () => {
-      const url = container.dataset.url;
-      const blockquote = document.createElement('blockquote');
-      blockquote.className = 'instagram-media w-full';
-      blockquote.setAttribute('data-instgrm-permalink', url);
-      blockquote.setAttribute('data-instgrm-version', '14');
-      container.innerHTML = ''; // limpa preview
-      container.appendChild(blockquote);
-      if (window.instgrm) instgrm.Embeds.process();
-    });
-  });
-</script>
+<!-- Script para ativar embed Instagram -->
+<script async src="https://www.instagram.com/embed.js"></script>
 
 <!-- Instagram embed script -->
 <script async src="https://www.instagram.com/embed.js"></script>
