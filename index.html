@@ -18,6 +18,9 @@
   <!-- Incluir o Lucide para os ícones -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Link para o Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
 
   
   <!-- Incluir o animate.css para animações -->
@@ -27,18 +30,19 @@
   
 </head>
 <body class="bg-white text-gray-800 font-sans overflow-x-hidden min-h-screen flex flex-col">
-  <!-- Header hero estiloso e responsivo -->
+
+<!-- Header hero estiloso e responsivo -->
 <section class="relative bg-gradient-to-r from-pink-100 via-purple-100 to-blue-100 py-12 px-4 sm:px-8 md:py-20">
-  <div class="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-10 sm:gap-14 md:gap-20">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 md:gap-12">
 
     <!-- Texto -->
-    <div class="w-full md:w-1/2 text-center md:text-left space-y-6 animate__animated animate__fadeInLeft animate__slow">
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-gray-800">
+    <div class="w-full md:w-1/2 text-center md:text-left space-y-4 sm:space-y-6 animate__animated animate__fadeInLeft animate__slow">
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight text-gray-800">
         <a href="https://www.instagram.com/watechevoce/" target="_blank" class="hover:text-pink-600 transition-colors duration-300">
           @WATech
         </a>
       </h1>
-      <p class="text-base sm:text-lg md:text-xl text-gray-700 max-w-md mx-auto md:mx-0">
+      <p class="text-lg sm:text-xl md:text-2xl text-gray-700 max-w-md mx-auto md:mx-0">
         Influencer de lifestyle, moda e viagens ✨
       </p>
       <a href="https://wa.me/5522999741139"
@@ -50,17 +54,150 @@
     <!-- Foto -->
     <div class="w-full md:w-1/2 flex justify-center animate__animated animate__fadeInRight animate__slow">
       <img src="assets/img/perfil.png" alt="Foto do Influencer"
-           class="w-52 h-52 sm:w-64 sm:h-64 md:w-80 md:h-80 object-cover transition-transform duration-500 hover:scale-105" />
+           class="w-96 h-96 sm:w-120 sm:h-120 md:w-160 md:h-160 object-cover transition-transform duration-500 hover:scale-110" />
     </div>
     
-
   </div>
 </section>
 
-      
-      
   
+  <!-- Player de música isolado em uma nova seção -->
+  <section class="bg-white py-8 px-4 sm:px-8 md:px-16">
+    <div class="max-w-lg mx-auto text-center bg-white p-4 rounded-lg shadow-lg">
+      <p class="text-lg font-semibold text-gray-700 mb-4">Curta a música enquanto navega!</p>
   
+      <!-- Player de música -->
+      <audio id="musicPlayer" controls class="w-full">
+        <source src="assets/musicas/musica0.mp3" type="audio/mp3">
+        <source src="assets/musicas/musica1.mp3" type="audio/mp3">
+        <source src="assets/musicas/musica2.mp3" type="audio/mp3">
+        Seu navegador não suporta o elemento audio.
+      </audio>
+  
+      <div class="mt-4 flex justify-center gap-4">
+        <!-- Botão Play/Pause -->
+        <button id="playPauseBtn" class="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600">
+          <span id="playPauseText">Play</span>
+        </button>
+  
+        <!-- Botão Anterior -->
+        <button id="prevTrackBtn" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600">
+          Anterior
+        </button>
+  
+        <!-- Botão Próxima -->
+        <button id="nextTrackBtn" class="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600">
+          Próxima
+        </button>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    // Elementos do player
+    const playPauseBtn = document.getElementById("playPauseBtn");
+    const playPauseText = document.getElementById("playPauseText");
+    const musicPlayer = document.getElementById("musicPlayer");
+  
+    // Faixas de música
+    const tracks = [
+      "assets/musicas/musica0.mp3",
+      "assets/musicas/musica1.mp3",
+      "assets/musicas/musica2.mp3"
+    ];
+    let currentTrackIndex = 0; // Índice da música atual
+  
+    // Alternar entre Play/Pause
+    playPauseBtn.addEventListener("click", () => {
+      if (musicPlayer.paused) {
+        musicPlayer.play();
+        playPauseText.textContent = "Pause";
+      } else {
+        musicPlayer.pause();
+        playPauseText.textContent = "Play";
+      }
+    });
+  
+    // Função para carregar e tocar a música no índice fornecido
+    function loadTrack(index) {
+      musicPlayer.src = tracks[index];
+      musicPlayer.play();
+      playPauseText.textContent = "Pause";
+    }
+  
+    // Trocar para a próxima música
+    document.getElementById("nextTrackBtn").addEventListener("click", () => {
+      currentTrackIndex = (currentTrackIndex + 1) % tracks.length; // Vai para a próxima faixa ou reinicia
+      loadTrack(currentTrackIndex);
+    });
+  
+    // Voltar para a música anterior
+    document.getElementById("prevTrackBtn").addEventListener("click", () => {
+      currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length; // Vai para a faixa anterior ou volta para a última
+      loadTrack(currentTrackIndex);
+    });
+  
+    // Carregar a primeira música
+    loadTrack(currentTrackIndex);
+  </script>
+  
+  <style>
+    /* Responsividade */
+    @media (max-width: 767px) {
+      /* Ajusta a altura da imagem no mobile */
+      .w-52 {
+        width: 90%;
+        height: auto;
+      }
+  
+      .h-52 {
+        height: auto;
+      }
+  
+      .w-64 {
+        width: 80%;
+        height: auto;
+      }
+  
+      .w-80 {
+        width: 70%;
+        height: auto;
+      }
+  
+      /* Alinha os botões de navegação e o texto centralizados no mobile */
+      .absolute {
+        bottom: 5%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+  
+      .gap-4 {
+        gap: 8px;
+      }
+  
+      .p-4 {
+        padding: 2rem;
+      }
+    }
+  
+    /* Media Queries para dispositivos maiores */
+    @media (min-width: 768px) {
+      .w-52 {
+        width: 10rem;
+        height: 10rem;
+      }
+  
+      .w-64 {
+        width: 12rem;
+        height: 12rem;
+      }
+  
+      .w-80 {
+        width: 15rem;
+        height: 15rem;
+      }
+    }
+  </style>
 
 <!-- Sobre -->
 <section class="py-12 px-6 md:px-12 text-center bg-gradient-to-r from-purple-600 to-pink-500 text-white animate__animated animate__fadeIn animate__delay-1s">
@@ -118,7 +255,186 @@
       </div>
     </div>
   </section>
+
+  <!-- Seção Diário de Viagem -->
+<section class="py-12 px-6 md:px-12 bg-gray-100"data-aos="fade-up">
+  <h2 class="text-3xl font-extrabold text-center mb-8 text-purple-700">Meu Diário de Viagem</h2>
   
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"data-aos="fade-up">
+    
+    <!-- Primeira Viagem -->
+    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:scale-105 transition-all">
+      <h3 class="text-xl font-semibold mb-4">Explorando as Ruas de Paris</h3>
+      <p class="text-gray-700 mb-4">Cada esquina em Paris conta uma história. Passei o dia explorando o charme da cidade luz e, claro, não poderia deixar de registrar tudo para vocês!</p>
+      
+      <!-- Imagens -->
+      <div class="mb-4">
+        <img class="w-full h-64 object-cover rounded-lg" src="/assets/img/ruaparis.jpg" alt="Paris - Ruas">
+      </div>
+      
+      <!-- Vídeo -->
+      <div class="mb-4">
+        <iframe class="w-full h-64 rounded-lg" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Explorando Paris" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      
+      <a href="#" class="text-pink-500 hover:underline mt-4 block">Leia mais sobre Paris</a>
+    </div>
+
+    <!-- Segunda Viagem -->
+    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:scale-105 transition-all">
+      <h3 class="text-xl font-semibold mb-4">Aventura nas Montanhas de Mendoza</h3>
+      <p class="text-gray-700 mb-4">Mendoza é um paraíso para os aventureiros! Fui desbravar as montanhas e as vinícolas. Venham ver como foi a experiência!</p>
+
+      <!-- Imagens -->
+      <div class="mb-4">
+        <img class="w-full h-64 object-cover rounded-lg" src="/assets/img/montanhamendoza.jpg" alt="Mendoza - Aventura nas montanhas">
+      </div>
+      
+      <!-- Vídeo -->
+      <div class="mb-4">
+        <iframe class="w-full h-64 rounded-lg" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Aventura nas Montanhas" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+
+      <a href="#" class="text-pink-500 hover:underline mt-4 block">Leia mais sobre Mendoza</a>
+    </div>
+
+    <!-- Terceira Viagem -->
+    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:scale-105 transition-all">
+      <h3 class="text-xl font-semibold mb-4">Cultura e História em Roma</h3>
+      <p class="text-gray-700 mb-4">Roma é um museu a céu aberto! Fui visitar pontos históricos e compartilhar um pouco da cultura local com vocês.</p>
+      
+      <!-- Imagens -->
+      <div class="mb-4">
+        <img class="w-full h-64 object-cover rounded-lg" src="/assets/img/roma.webp" alt="Roma - Cultura e História">
+      </div>
+      
+      <!-- Vídeo -->
+      <div class="mb-4">
+        <iframe class="w-full h-64 rounded-lg" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Explorando Roma" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+
+      <a href="#" class="text-pink-500 hover:underline mt-4 block">Leia mais sobre Roma</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Seção de Natal: Agradecimentos e Caridade -->
+<section class="py-12 px-6 md:px-12 bg-green-50"data-aos="fade-up">
+  <h2 class="text-3xl font-extrabold text-center mb-8 text-red-700">Feliz Natal! Agradecimentos e Caridade</h2>
+  
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"data-aos="fade-up">
+    
+    <!-- Agradecimento -->
+    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:scale-105 transition-all">
+      <h3 class="text-xl font-semibold mb-4">Agradecemos seu apoio!</h3>
+      <p class="text-gray-700 mb-4">Este ano foi incrível e não poderíamos ter feito tudo isso sem o seu apoio! Agradecemos a todos que estiveram conosco em nossa jornada.</p>
+      <img class="w-full h-48 object-cover rounded-lg mb-4" src="https://via.placeholder.com/400x250" alt="Agradecimentos Natalinos">
+      <p class="text-gray-700">Desejamos a todos um Natal repleto de amor e alegria, e que o próximo ano traga ainda mais felicidade e realizações!</p>
+    </div>
+
+    <!-- Caridade -->
+    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:scale-105 transition-all">
+      <h3 class="text-xl font-semibold mb-4">Espalhe Amor: Doações de Natal</h3>
+      <p class="text-gray-700 mb-4">O Natal é o momento perfeito para praticarmos a generosidade. Convidamos você a participar de nossa campanha de doações para famílias carentes e instituições de caridade.</p>
+      <div class="mb-4">
+        <img class="w-full h-48 object-cover rounded-lg" src="https://via.placeholder.com/400x250" alt="Caridade de Natal">
+      </div>
+      <a href="#" class="text-red-500 hover:underline mt-4 block">Saiba mais sobre como contribuir</a>
+    </div>
+
+    <!-- Doações e Impacto -->
+    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:scale-105 transition-all">
+      <h3 class="text-xl font-semibold mb-4">Seu Impacto: Faça a Diferença!</h3>
+      <p class="text-gray-700 mb-4">Com cada doação, você transforma a vida de alguém. Mesmo o menor gesto pode trazer alegria e esperança para aqueles que mais precisam.</p>
+      <div class="mb-4">
+        <img class="w-full h-48 object-cover rounded-lg" src="https://via.placeholder.com/400x250" alt="Doações de Natal">
+      </div>
+      <a href="#" class="text-red-500 hover:underline mt-4 block">Veja como seu apoio ajuda</a>
+    </div>
+    
+  </div>
+  
+  <!-- Botão para Doações -->
+  <div class="text-center mt-8">
+    <a href="#" class="bg-red-700 text-white py-3 px-6 rounded-lg text-lg hover:bg-red-600 transition-all">Faça sua Doação Agora</a>
+  </div>
+</section>
+
+
+
+  <!-- Seção de Blog -->
+<section class="py-12 px-6 md:px-12 bg-gray-50"data-aos="fade-up">
+  <h2 class="text-3xl font-extrabold text-center mb-8 text-purple-700">Blog e Artigos</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:scale-105 transition-all">
+      <h3 class="text-xl font-semibold mb-4">Como me Organizo para Viagens Incríveis</h3>
+      <p class="text-gray-700">Viajar é uma paixão! Confira minhas dicas e truques para viagens inesquecíveis.</p>
+      <a href="#" class="text-pink-500 hover:underline mt-4 block">Leia mais</a>
+    </div>
+    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:scale-105 transition-all">
+      <h3 class="text-xl font-semibold mb-4">Tendências de Moda para 2025</h3>
+      <p class="text-gray-700">Descubra as últimas tendências de moda que vão dominar as passarelas e as ruas este ano.</p>
+      <a href="#" class="text-pink-500 hover:underline mt-4 block">Leia mais</a>
+    </div>
+    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:scale-105 transition-all">
+      <h3 class="text-xl font-semibold mb-4">Como Construir uma Carreira de Influencer</h3>
+      <p class="text-gray-700">Dicas práticas para quem quer crescer nas redes sociais e conquistar seu público.</p>
+      <a href="#" class="text-pink-500 hover:underline mt-4 block">Leia mais</a>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Seção sobre o Dia a Dia do Influencer com Imagens, Vídeos e Histórias -->
+<section class="py-12 px-6 md:px-12 bg-gray-100"data-aos="fade-up">
+  <h2 class="text-3xl font-extrabold text-center mb-8 text-purple-700">O Dia a Dia do Influencer</h2>
+  
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"data-aos="fade-up">
+    <!-- Primeira Parte: Acordando Cedo para Organizar o Conteúdo -->
+    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:scale-105 transition-all">
+      <h3 class="text-xl font-semibold mb-4">Acordando Cedo para Organizar o Conteúdo</h3>
+      <p class="text-gray-700 mb-4">Começar o dia cedo para organizar o conteúdo e planejar o que será compartilhado nas redes sociais é essencial. Aqui está um vídeo do meu processo de planejamento!</p>
+      
+      <!-- Vídeo -->
+      <div class="mb-4">
+        <iframe class="w-full h-64 rounded-lg" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Planejamento de Conteúdo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      
+      <a href="#" class="text-pink-500 hover:underline mt-4 block">Leia mais</a>
+    </div>
+
+    <!-- Segunda Parte: Interagindo com os Seguidores -->
+    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:scale-105 transition-all">
+      <h3 class="text-xl font-semibold mb-4">Interagindo com os Seguidores</h3>
+      <p class="text-gray-700 mb-4">Além dos posts, interagir com os seguidores é fundamental. Aqui estão algumas imagens dos bastidores enquanto respondo mensagens e comentários.</p>
+
+      <!-- Imagens -->
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <img class="w-full h-40 object-cover rounded-lg" src="https://via.placeholder.com/400x250" alt="Interagindo com seguidores 1">
+        <img class="w-full h-40 object-cover rounded-lg" src="https://via.placeholder.com/400x250" alt="Interagindo com seguidores 2">
+      </div>
+
+      <a href="#" class="text-pink-500 hover:underline mt-4 block">Leia mais</a>
+    </div>
+
+    <!-- Terceira Parte: Desafios e Superações -->
+    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:scale-105 transition-all">
+      <h3 class="text-xl font-semibold mb-4">Desafios e Superações</h3>
+      <p class="text-gray-700 mb-4">Não é sempre fácil, mas aprender a superar os desafios é parte do crescimento. Veja uma história que compartilhei com meus seguidores sobre como superei um período difícil.</p>
+      
+      <!-- História (Imagem + Texto) -->
+      <div class="mb-4">
+        <img class="w-full h-64 object-cover rounded-lg" src="https://via.placeholder.com/400x250" alt="Desafios e superações">
+        <p class="text-gray-700 mt-4">Essa foto representa um dos dias mais difíceis que passei, mas ao final do dia, consegui encontrar equilíbrio e força. Superar obstáculos é o que me motiva a continuar e a compartilhar minha jornada com vocês!</p>
+      </div>
+
+      <a href="#" class="text-pink-500 hover:underline mt-4 block">Leia mais</a>
+    </div>
+  </div>
+</section>
+
 
 <!-- Seção de Vídeos -->
 <section class="py-12 bg-white px-6 md:px-12">
@@ -238,10 +554,12 @@ document.querySelectorAll('.video-container').forEach(container => {
     </a>
 </section>
 
-  
-  
+    <!-- Botão de WhatsApp flutuante com ícone simples e sem borda -->
+    <a href="https://wa.me/5522999741139" target="_blank" class="fixed bottom-4 right-4 bg-green-500 text-white p-3 shadow-lg hover:bg-green-600 transition-all duration-300 rounded-full">
+      <i class="fab fa-whatsapp text-3xl"></i>
+  </a>
 
-<footer class="bg-gray-800 text-white text-center py-4 mt-auto">
+<footer class="bg-gray-800 text-white text-center py-4 mt-auto relative">
   <p class="text-sm">
     Desenvolvido por 
     <a href="https://github.com/WallaceMamuth" target="_blank" class="text-pink-400 hover:text-pink-300 transition duration-300">
@@ -251,7 +569,24 @@ document.querySelectorAll('.video-container').forEach(container => {
   <p class="text-sm mt-2">
     © 2025 WATech. Todos os direitos reservados.
   </p>
+
+  <!-- Botão Volte ao Topo -->
+  <button id="scrollToTop" class="bg-pink-500 text-white rounded-full p-3 absolute bottom-4 right-4 opacity-80 hover:opacity-100 transition-opacity duration-300">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7-7-7 7"></path>
+    </svg>
+  </button>
 </footer>
+<script>
+  // Função para rolar até o topo quando o botão for clicado
+  document.getElementById("scrollToTop").addEventListener("click", function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // Rolagem suave para o topo
+    });
+  });
+</script>
+
   
 
   <script>
