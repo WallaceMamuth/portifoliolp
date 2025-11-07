@@ -3,600 +3,590 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Influencer Landing Page</title>
-  
-  <!-- Incluir o Tailwind CSS -->
+    <title>Watechina • Influencer que conecta lifestyle e tecnologia</title>
+    <link rel="preconnect" href="https://www.youtube.com" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://www.youtube.com">
-  <head>
-    <!-- Link para o Tailwind CSS via CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  </head>
-  
-
-  
-  <!-- Incluir o Lucide para os ícones -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <!-- Link para o Font Awesome -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+      :root {
+        color-scheme: light;
+      }
 
+      body {
+        font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      }
 
-  
-  <!-- Incluir o animate.css para animações -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+      .bg-wa {
+        background: #00f5c7;
+      }
 
-  
-</head>
-<body class="bg-white text-gray-800 font-sans overflow-x-hidden min-h-screen flex flex-col">
+      .bg-waHover {
+        background: #00dcb3;
+      }
 
-<!-- Header hero estiloso e responsivo -->
-<section class="relative bg-gradient-to-r from-pink-100 via-purple-100 to-blue-100 py-12 px-4 sm:px-8 md:py-20">
-  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 md:gap-12">
+      .shadow-wa {
+        box-shadow: 0 20px 45px -15px rgba(0, 245, 199, 0.55);
+      }
 
-    <!-- Texto -->
-    <div class="w-full md:w-1/2 text-center md:text-left space-y-4 sm:space-y-6 animate__animated animate__fadeInLeft animate__slow">
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight text-gray-800">
-        <a href="https://www.instagram.com/watechevoce/" target="_blank" class="hover:text-pink-600 transition-colors duration-300">
-          @WATech
-        </a>
-      </h1>
-      <p class="text-lg sm:text-xl md:text-2xl text-gray-700 max-w-md mx-auto md:mx-0">
-        Influencer de lifestyle, moda e viagens ✨
-      </p>
-      <a href="https://wa.me/5522999741139"
-         class="inline-block bg-pink-500 text-white px-5 py-3 rounded-full shadow-md text-sm sm:text-base font-semibold transition-all duration-300 hover:bg-pink-600 hover:scale-105">
-        Entre em contato
-      </a>
-    </div>
+      .animate-rotateButton {
+        animation: pulse-scale 4s ease-in-out infinite;
+      }
 
-    <!-- Foto -->
-    <div class="w-full md:w-1/2 flex justify-center animate__animated animate__fadeInRight animate__slow">
-      <img src="static/assets/img/perfil.png" alt="Foto do Influencer"
-           class="w-96 h-96 sm:w-120 sm:h-120 md:w-160 md:h-160 object-cover transition-transform duration-500 hover:scale-110" />
-    </div>
-    
-  </div>
-</section>
+      @keyframes pulse-scale {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
 
-  
-  <!-- Player de música isolado em uma nova seção -->
-  <section class="bg-white py-8 px-4 sm:px-8 md:px-16">
-    <div class="max-w-lg mx-auto text-center bg-white p-4 rounded-lg shadow-lg">
-      <p class="text-lg font-semibold text-gray-700 mb-4">Curta a música enquanto navega!</p>
-  
-      <!-- Player de música -->
-      <audio id="musicPlayer" controls class="w-full">
-        <source src="static/assets/musica/musica0.mp3" type="audio/mp3">
-        <source src="static/assets/musica/musica1.mp3" type="audio/mp3">
-        <source src="static/assets/musica/musica2.mp3" type="audio/mp3">
-        Seu navegador não suporta o elemento audio.
-      </audio>
-  
-      <div class="mt-4 flex justify-center gap-4">
-        <!-- Botão Play/Pause -->
-        <button id="playPauseBtn" class="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600">
-          <span id="playPauseText">Play</span>
-        </button>
-  
-        <!-- Botão Anterior -->
-        <button id="prevTrackBtn" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600">
-          Anterior
-        </button>
-  
-        <!-- Botão Próxima -->
-        <button id="nextTrackBtn" class="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600">
-          Próxima
-        </button>
-      </div>
-    </div>
-  </section>
-  
-  <script>
-    // Elementos do player
-    const playPauseBtn = document.getElementById("playPauseBtn");
-    const playPauseText = document.getElementById("playPauseText");
-    const musicPlayer = document.getElementById("musicPlayer");
-  
-    // Faixas de música
-    const tracks = [
-      "static/assets/musica/musica0.mp3",
-      "static/assets/musica/musica1.mp3",
-      "static/assets/musica/musica2.mp3"
-    ];
-    let currentTrackIndex = 0; // Índice da música atual
-  
-    // Alternar entre Play/Pause
-    playPauseBtn.addEventListener("click", () => {
-      if (musicPlayer.paused) {
-        musicPlayer.play();
-        playPauseText.textContent = "Pause";
-      } else {
-        musicPlayer.pause();
-        playPauseText.textContent = "Play";
+      .metric-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        border-radius: 9999px;
+        padding: 0.65rem 1.4rem;
+        backdrop-filter: blur(6px);
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
       }
-    });
-  
-    // Função para carregar e tocar a música no índice fornecido
-    function loadTrack(index) {
-      musicPlayer.src = tracks[index];
-      musicPlayer.play();
-      playPauseText.textContent = "Pause";
-    }
-  
-    // Trocar para a próxima música
-    document.getElementById("nextTrackBtn").addEventListener("click", () => {
-      currentTrackIndex = (currentTrackIndex + 1) % tracks.length; // Vai para a próxima faixa ou reinicia
-      loadTrack(currentTrackIndex);
-    });
-  
-    // Voltar para a música anterior
-    document.getElementById("prevTrackBtn").addEventListener("click", () => {
-      currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length; // Vai para a faixa anterior ou volta para a última
-      loadTrack(currentTrackIndex);
-    });
-  
-    // Carregar a primeira música
-    loadTrack(currentTrackIndex);
-  </script>
-  
-  <style>
-    /* Responsividade */
-    @media (max-width: 767px) {
-      /* Ajusta a altura da imagem no mobile */
-      .w-52 {
-        width: 90%;
-        height: auto;
+
+      .smooth-hover {
+        transition: transform 0.25s ease-out, box-shadow 0.25s ease-out, opacity 0.25s ease-out;
+        will-change: transform;
+        transform: translateZ(0);
       }
-  
-      .h-52 {
-        height: auto;
+
+      .defer-section {
+        content-visibility: auto;
+        contain-intrinsic-size: 680px 460px;
       }
-  
-      .w-64 {
-        width: 80%;
-        height: auto;
-      }
-  
-      .w-80 {
-        width: 70%;
-        height: auto;
-      }
-  
-      /* Alinha os botões de navegação e o texto centralizados no mobile */
-      .absolute {
-        bottom: 5%;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-  
-      .gap-4 {
-        gap: 8px;
-      }
-  
-      .p-4 {
-        padding: 2rem;
-      }
-    }
-  
-    /* Media Queries para dispositivos maiores */
-    @media (min-width: 768px) {
-      .w-52 {
-        width: 10rem;
-        height: 10rem;
-      }
-  
-      .w-64 {
-        width: 12rem;
-        height: 12rem;
-      }
-  
-      .w-80 {
-        width: 15rem;
-        height: 15rem;
-      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .smooth-hover,
+        .smooth-hover * {
+          transition: none !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+        }
     }
   </style>
-
-<!-- Sobre -->
-<section class="py-12 px-6 md:px-12 text-center bg-gradient-to-r from-purple-600 to-pink-500 text-white animate__animated animate__fadeIn animate__delay-1s">
-    <h2 class="text-4xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-500">
-      Sobre mim
-    </h2>
-    <p class="max-w-3xl mx-auto text-lg md:text-xl font-light mb-8">
-      Compartilho meu dia a dia com mais de 100 mil seguidores! Trabalho com marcas incríveis e levo autenticidade, estilo e energia positiva em tudo que faço.
-    </p>
-
-<!-- Redes sociais com ícones reais e destaque -->
-<div class="flex flex-wrap justify-center gap-4 mt-6 animate__animated animate__fadeIn animate__delay-2s">
-  <a href="#" target="_blank" class="transition-all duration-300 transform hover:scale-125 hover:text-pink-500">
-    <i class="fab fa-instagram text-3xl"></i>
-  </a>
-  <a href="#" target="_blank" class="transition-all duration-300 transform hover:scale-125 hover:text-black">
-    <i class="fab fa-tiktok text-3xl"></i>
-  </a>
-  <a href="#" target="_blank" class="transition-all duration-300 transform hover:scale-125 hover:text-orange-400">
-    <i class="fas fa-video text-3xl"></i> <!-- Pode substituir por ícone do Kwai (não tem oficial) -->
-  </a>
-  <a href="#" target="_blank" class="transition-all duration-300 transform hover:scale-125 hover:text-blue-600">
-    <i class="fab fa-facebook text-3xl"></i>
-  </a>
-  <a href="#" target="_blank" class="transition-all duration-300 transform hover:scale-125 hover:text-sky-400">
-    <i class="fab fa-twitter text-3xl"></i>
+  </head>
+  <body class="min-h-screen bg-white text-gray-800">
+    <header class="relative overflow-hidden bg-gradient-to-br from-pink-200 via-purple-200 to-blue-200">
+      <div class="absolute inset-0 bg-[url('static/assets/img/roma.webp')] opacity-10 bg-cover bg-center mix-blend-soft-light"></div>
+      <div class="relative z-10 mx-auto flex max-w-6xl flex-col gap-12 px-6 py-20 md:flex-row md:items-center md:justify-between md:px-12 lg:py-24">
+        <div class="text-center md:w-1/2 md:text-left" data-aos="fade-right">
+          <div class="inline-flex flex-col gap-1 rounded-2xl border border-black/10 bg-white px-5 py-3 text-black shadow-lg shadow-black/10">
+            <p class="font-bold uppercase tracking-[0.5em]">Portfólio WA Tech</p>
+            <p class="text-sm font-medium leading-relaxed">
+              Este layout é totalmente personalizável: incluímos, removemos ou adaptamos seções para que o site reflita a identidade e o posicionamento da sua empresa.
+            </p>
+          </div>
+          <h1 class="mt-8 text-4xl font-extrabold leading-tight text-gray-900 sm:text-5xl md:text-6xl">
+            Watechina
+          </h1>
+          <p class="mt-3 inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-sm font-semibold uppercase tracking-[0.35em] text-pink-600 shadow-sm">
+            <i class="fa-brands fa-instagram text-base"></i>
+            @watechevoce
+          </p>
+          <p class="mt-4 max-w-lg text-lg text-gray-700">
+            Crio experiências digitais que geram conexão real. Do feed ao evento, da ideia ao relatório final, cada entrega tem estratégia, estética e conversão.
+          </p>
+          <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:justify-start">
+            <a
+              href="https://www.watechevoce.com.br?utm_source=portfolio&utm_medium=cta&utm_campaign=hero_contato"
+              class="inline-flex items-center gap-2 rounded-full bg-pink-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-pink-500/40 transition-all duration-300 hover:-translate-y-1 hover:bg-pink-700"
+            >
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+              Vamos colaborar
+            </a>
+            <a
+              href="https://www.watechevoce.com.br?utm_source=portfolio&utm_medium=cta&utm_campaign=hero_follow"
+              target="_blank"
+              class="inline-flex items-center gap-2 rounded-full border border-pink-500/60 px-6 py-3 text-base font-semibold text-pink-600 transition-all duration-300 hover:-translate-y-1 hover:bg-white"
+            >
+              <i class="fa-brands fa-instagram text-lg"></i>
+              Seguir no Instagram
+            </a>
+          </div>
+          <div class="mt-12 flex flex-wrap justify-center gap-4 md:justify-start">
+            <div class="metric-pill bg-white/40 text-gray-800 shadow-sm shadow-white/30">
+              <i class="fa-solid fa-bolt text-pink-500"></i>
+              40+ campanhas com marcas tech & lifestyle
+            </div>
+            <div class="metric-pill bg-white/30 text-gray-900">
+              <i class="fa-solid fa-chart-line text-purple-500"></i>
+              Engajamento 8,2% acima do nicho
+            </div>
+            <div class="metric-pill bg-white/20 text-gray-900">
+              <i class="fa-solid fa-people-group text-blue-500"></i>
+              Comunidade ativa +320K views/mês
+            </div>
+          </div>
+          <div class="mt-8 flex flex-wrap items-center justify-center gap-4 text-2xl text-pink-500 md:justify-start">
+            <a href="https://www.watechevoce.com.br" target="_blank" class="transition-transform hover:-translate-y-1" aria-label="Instagram Watechina">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.watechevoce.com.br" target="_blank" class="transition-transform hover:-translate-y-1" aria-label="Facebook Watechina">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="https://www.watechevoce.com.br" target="_blank" class="transition-transform hover:-translate-y-1" aria-label="TikTok Watechina">
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+            <a href="https://www.watechevoce.com.br" target="_blank" class="transition-transform hover:-translate-y-1" aria-label="YouTube Watechina">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+            <a href="https://www.watechevoce.com.br" target="_blank" class="transition-transform hover:-translate-y-1" aria-label="WhatsApp Watechina">
+              <i class="fa-brands fa-whatsapp"></i>
   </a>
 </div>
-
-
-
-</section>
-
-  
-
-<!-- Galeria de fotos -->
-<section class="py-12 bg-gray-50 px-6 md:px-12">
-  <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-10 text-purple-700 animate__animated animate__fadeInDown animate__slow">
-    <span class="inline-block animate__animated animate__pulse animate__infinite">Momentos</span>
-  </h2>
-  
-    <!-- Grid responsivo com 2 colunas no mobile e 2 colunas em telas grandes -->
-    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 animate__animated animate__fadeIn animate__delay-1s">
-        <img src="assets/img/suafoto1.jpg" alt="Foto 1" class="object-cover w-full h-48" />
-      </div>
-      <div class="overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 animate__animated animate__fadeIn animate__delay-2s">
-        <img src="assets/img/suafoto1.jpg" alt="Foto 2" class="object-cover w-full h-48" />
-      </div>
-      <div class="overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 animate__animated animate__fadeIn animate__delay-3s">
-        <img src="assets/img/suafoto1.jpg" alt="Foto 3" class="object-cover w-full h-48" />
-      </div>
-      <div class="overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 animate__animated animate__fadeIn animate__delay-4s">
-        <img src="assets/img/suafoto1.jpg" alt="Foto 4" class="object-cover w-full h-48" />
-      </div>
-    </div>
-  </section>
-
-  <!-- Seção Diário de Viagem -->
-<section class="py-12 px-6 md:px-12 bg-gray-100"data-aos="fade-up">
-  <h2 class="text-3xl font-extrabold text-center mb-8 text-purple-700">Meu Diário de Viagem</h2>
-  
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"data-aos="fade-up">
-    
-    <!-- Primeira Viagem -->
-    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:scale-105 transition-all">
-      <h3 class="text-xl font-semibold mb-4">Explorando as Ruas de Paris</h3>
-      <p class="text-gray-700 mb-4">Cada esquina em Paris conta uma história. Passei o dia explorando o charme da cidade luz e, claro, não poderia deixar de registrar tudo para vocês!</p>
-      
-      <!-- Imagens -->
-      <div class="mb-4">
-        <img class="w-full h-64 object-cover rounded-lg" src="static/assets/img/ruaparis.jpg" alt="Paris - Ruas">
-      </div>
-      
-      <!-- Vídeo -->
-      <div class="mb-4">
-        <iframe class="w-full h-64 rounded-lg" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Explorando Paris" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      
-      <a href="#" class="text-pink-500 hover:underline mt-4 block">Leia mais sobre Paris</a>
-    </div>
-
-    <!-- Segunda Viagem -->
-    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:scale-105 transition-all">
-      <h3 class="text-xl font-semibold mb-4">Aventura nas Montanhas de Mendoza</h3>
-      <p class="text-gray-700 mb-4">Mendoza é um paraíso para os aventureiros! Fui desbravar as montanhas e as vinícolas. Venham ver como foi a experiência!</p>
-
-      <!-- Imagens -->
-      <div class="mb-4">
-        <img class="w-full h-64 object-cover rounded-lg" src="static/assets/img/montanhamendoza.jpg" alt="Mendoza - Aventura nas montanhas">
-      </div>
-      
-      <!-- Vídeo -->
-      <div class="mb-4">
-        <iframe class="w-full h-64 rounded-lg" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Aventura nas Montanhas" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-
-      <a href="#" class="text-pink-500 hover:underline mt-4 block">Leia mais sobre Mendoza</a>
-    </div>
-
-    <!-- Terceira Viagem -->
-    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:scale-105 transition-all">
-      <h3 class="text-xl font-semibold mb-4">Cultura e História em Roma</h3>
-      <p class="text-gray-700 mb-4">Roma é um museu a céu aberto! Fui visitar pontos históricos e compartilhar um pouco da cultura local com vocês.</p>
-      
-      <!-- Imagens -->
-      <div class="mb-4">
-        <img class="w-full h-64 object-cover rounded-lg" src="static/assets/img/roma.webp" alt="Roma - Cultura e História">
-      </div>
-      
-      <!-- Vídeo -->
-      <div class="mb-4">
-        <iframe class="w-full h-64 rounded-lg" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Explorando Roma" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-
-      <a href="#" class="text-pink-500 hover:underline mt-4 block">Leia mais sobre Roma</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- Seção de Natal: Agradecimentos e Caridade -->
-<section class="py-12 px-6 md:px-12 bg-green-50"data-aos="fade-up">
-  <h2 class="text-3xl font-extrabold text-center mb-8 text-red-700">Feliz Natal! Agradecimentos e Caridade</h2>
-  
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"data-aos="fade-up">
-    
-    <!-- Agradecimento -->
-    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:scale-105 transition-all">
-      <h3 class="text-xl font-semibold mb-4">Agradecemos seu apoio!</h3>
-      <p class="text-gray-700 mb-4">Este ano foi incrível e não poderíamos ter feito tudo isso sem o seu apoio! Agradecemos a todos que estiveram conosco em nossa jornada.</p>
-      <img class="w-full h-48 object-cover rounded-lg mb-4" src="https://via.placeholder.com/400x250" alt="Agradecimentos Natalinos">
-      <p class="text-gray-700">Desejamos a todos um Natal repleto de amor e alegria, e que o próximo ano traga ainda mais felicidade e realizações!</p>
-    </div>
-
-    <!-- Caridade -->
-    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:scale-105 transition-all">
-      <h3 class="text-xl font-semibold mb-4">Espalhe Amor: Doações de Natal</h3>
-      <p class="text-gray-700 mb-4">O Natal é o momento perfeito para praticarmos a generosidade. Convidamos você a participar de nossa campanha de doações para famílias carentes e instituições de caridade.</p>
-      <div class="mb-4">
-        <img class="w-full h-48 object-cover rounded-lg" src="https://via.placeholder.com/400x250" alt="Caridade de Natal">
-      </div>
-      <a href="#" class="text-red-500 hover:underline mt-4 block">Saiba mais sobre como contribuir</a>
-    </div>
-
-    <!-- Doações e Impacto -->
-    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:scale-105 transition-all">
-      <h3 class="text-xl font-semibold mb-4">Seu Impacto: Faça a Diferença!</h3>
-      <p class="text-gray-700 mb-4">Com cada doação, você transforma a vida de alguém. Mesmo o menor gesto pode trazer alegria e esperança para aqueles que mais precisam.</p>
-      <div class="mb-4">
-        <img class="w-full h-48 object-cover rounded-lg" src="https://via.placeholder.com/400x250" alt="Doações de Natal">
-      </div>
-      <a href="#" class="text-red-500 hover:underline mt-4 block">Veja como seu apoio ajuda</a>
-    </div>
-    
-  </div>
-  
-  <!-- Botão para Doações -->
-  <div class="text-center mt-8">
-    <a href="#" class="bg-red-700 text-white py-3 px-6 rounded-lg text-lg hover:bg-red-600 transition-all">Faça sua Doação Agora</a>
-  </div>
-</section>
-
-
-
-  <!-- Seção de Blog -->
-<section class="py-12 px-6 md:px-12 bg-gray-50"data-aos="fade-up">
-  <h2 class="text-3xl font-extrabold text-center mb-8 text-purple-700">Blog e Artigos</h2>
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:scale-105 transition-all">
-      <h3 class="text-xl font-semibold mb-4">Como me Organizo para Viagens Incríveis</h3>
-      <p class="text-gray-700">Viajar é uma paixão! Confira minhas dicas e truques para viagens inesquecíveis.</p>
-      <a href="#" class="text-pink-500 hover:underline mt-4 block">Leia mais</a>
-    </div>
-    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:scale-105 transition-all">
-      <h3 class="text-xl font-semibold mb-4">Tendências de Moda para 2025</h3>
-      <p class="text-gray-700">Descubra as últimas tendências de moda que vão dominar as passarelas e as ruas este ano.</p>
-      <a href="#" class="text-pink-500 hover:underline mt-4 block">Leia mais</a>
-    </div>
-    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:scale-105 transition-all">
-      <h3 class="text-xl font-semibold mb-4">Como Construir uma Carreira de Influencer</h3>
-      <p class="text-gray-700">Dicas práticas para quem quer crescer nas redes sociais e conquistar seu público.</p>
-      <a href="#" class="text-pink-500 hover:underline mt-4 block">Leia mais</a>
-    </div>
-  </div>
-</section>
-
-
-
-<!-- Seção sobre o Dia a Dia do Influencer com Imagens, Vídeos e Histórias -->
-<section class="py-12 px-6 md:px-12 bg-gray-100"data-aos="fade-up">
-  <h2 class="text-3xl font-extrabold text-center mb-8 text-purple-700">O Dia a Dia do Influencer</h2>
-  
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"data-aos="fade-up">
-    <!-- Primeira Parte: Acordando Cedo para Organizar o Conteúdo -->
-    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:scale-105 transition-all">
-      <h3 class="text-xl font-semibold mb-4">Acordando Cedo para Organizar o Conteúdo</h3>
-      <p class="text-gray-700 mb-4">Começar o dia cedo para organizar o conteúdo e planejar o que será compartilhado nas redes sociais é essencial. Aqui está um vídeo do meu processo de planejamento!</p>
-      
-      <!-- Vídeo -->
-      <div class="mb-4">
-        <iframe class="w-full h-64 rounded-lg" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Planejamento de Conteúdo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      
-      <a href="#" class="text-pink-500 hover:underline mt-4 block">Leia mais</a>
-    </div>
-
-    <!-- Segunda Parte: Interagindo com os Seguidores -->
-    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:scale-105 transition-all">
-      <h3 class="text-xl font-semibold mb-4">Interagindo com os Seguidores</h3>
-      <p class="text-gray-700 mb-4">Além dos posts, interagir com os seguidores é fundamental. Aqui estão algumas imagens dos bastidores enquanto respondo mensagens e comentários.</p>
-
-      <!-- Imagens -->
-      <div class="grid grid-cols-2 gap-4 mb-4">
-        <img class="w-full h-40 object-cover rounded-lg" src="https://via.placeholder.com/400x250" alt="Interagindo com seguidores 1">
-        <img class="w-full h-40 object-cover rounded-lg" src="https://via.placeholder.com/400x250" alt="Interagindo com seguidores 2">
-      </div>
-
-      <a href="#" class="text-pink-500 hover:underline mt-4 block">Leia mais</a>
-    </div>
-
-    <!-- Terceira Parte: Desafios e Superações -->
-    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transform hover:scale-105 transition-all">
-      <h3 class="text-xl font-semibold mb-4">Desafios e Superações</h3>
-      <p class="text-gray-700 mb-4">Não é sempre fácil, mas aprender a superar os desafios é parte do crescimento. Veja uma história que compartilhei com meus seguidores sobre como superei um período difícil.</p>
-      
-      <!-- História (Imagem + Texto) -->
-      <div class="mb-4">
-        <img class="w-full h-64 object-cover rounded-lg" src="https://via.placeholder.com/400x250" alt="Desafios e superações">
-        <p class="text-gray-700 mt-4">Essa foto representa um dos dias mais difíceis que passei, mas ao final do dia, consegui encontrar equilíbrio e força. Superar obstáculos é o que me motiva a continuar e a compartilhar minha jornada com vocês!</p>
-      </div>
-
-      <a href="#" class="text-pink-500 hover:underline mt-4 block">Leia mais</a>
-    </div>
-  </div>
-</section>
-
-
-<!-- Seção de Vídeos -->
-<section class="py-12 bg-white px-6 md:px-12">
-  <h2 class="text-3xl font-bold text-center mb-8" data-aos="fade-up">Vídeos em Destaque</h2>
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
-  
-    <!-- Vídeo 1 -->
-    <div class="video-container group relative rounded-xl overflow-hidden cursor-pointer" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
-      <div class="relative w-full pb-[56.25%]"> <!-- Aspect Ratio -->
-        <img src="https://img.youtube.com/vi/sc1RIX0RZBo/hqdefault.jpg" alt="Thumb Vídeo 1" class="absolute top-0 left-0 w-full h-full object-cover">
-        <div class="absolute inset-0 flex items-center justify-center play-btn">
-          <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z" />
-          </svg>
         </div>
-        <!-- Video player precisa ocupar todo o espaço -->
-        <div class="video-player absolute top-0 left-0 w-full h-full hidden">
-          <iframe src="https://www.youtube.com/embed/sc1RIX0RZBo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="w-full h-full"></iframe>
+        <div class="relative flex justify-center md:w-1/2" data-aos="fade-left">
+          <div class="absolute -inset-6 rounded-full bg-gradient-to-br from-pink-500 via-purple-500 to-blue-500 opacity-40 blur-3xl"></div>
+          <img
+            src="static/assets/img/perfil.png"
+            alt="Influencer Watechina"
+            class="relative z-10 w-80 max-w-xs rounded-[36px] border-8 border-white shadow-2xl shadow-pink-500/20 transition-transform duration-500 hover:-translate-y-3 hover:rotate-1"
+          />
         </div>
       </div>
-    </div>
-
-    <!-- Vídeo 2 -->
-    <div class="video-container group relative rounded-xl overflow-hidden cursor-pointer" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
-      <div class="relative w-full pb-[56.25%]">
-        <img src="https://img.youtube.com/vi/3JZ_D3ELwOQ/hqdefault.jpg" alt="Thumb Vídeo 2" class="absolute top-0 left-0 w-full h-full object-cover">
-        <div class="absolute inset-0 flex items-center justify-center play-btn">
-          <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </div>
-        <div class="video-player absolute top-0 left-0 w-full h-full hidden">
-          <iframe src="https://www.youtube.com/embed/3JZ_D3ELwOQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="w-full h-full"></iframe>
-        </div>
+    </header>
+    <section class="defer-section bg-white py-16 px-6 md:px-12">
+      <div class="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1.1fr_0.9fr] md:items-center">
+        <div data-aos="fade-up">
+          <span class="text-sm font-semibold uppercase tracking-[0.3em] text-pink-600">Quem é Watechina</span>
+        <h2 class="mt-4 text-3xl font-bold text-gray-900 md:text-4xl">
+          Influencer de lifestyle, moda e tecnologia. Estratégias com dados, estética e alma para marcas que querem ir além do básico.
+        </h2>
+          <div class="mt-6 space-y-4 text-gray-600">
+            <div class="flex gap-3">
+              <i class="fa-solid fa-compass text-pink-500"></i>
+              <span>Planeja narrativas completas: briefing, roteiro, produção, cobertura ao vivo e relatório final.</span>
+      </div>
+            <div class="flex gap-3">
+              <i class="fa-solid fa-sparkles text-purple-500"></i>
+              <span>Constrói estéticas proprietárias para cada parceria, mantendo consistência entre feed, reels, stories e eventos.</span>
+      </div>
+            <div class="flex gap-3">
+              <i class="fa-solid fa-heart text-blue-500"></i>
+              <span>Transforma seguidores em comunidade: 70% responde enquetes semanais e participa das lives de bastidores.</span>
       </div>
     </div>
+          <a
+            href="https://www.watechevoce.com.br"
+            target="_blank"
+            class="mt-8 inline-flex items-center gap-2 rounded-full border border-gray-200 px-5 py-3 text-sm font-semibold text-gray-700 shadow-sm transition-all hover:-translate-y-1 hover:border-pink-500 hover:text-pink-600"
+          >
+            <i class="fa-solid fa-arrow-trend-up"></i>
+            Conheça minha jornada completa
+          </a>
+        </div>
+        <div class="relative grid gap-6" data-aos="fade-up" data-aos-delay="150">
+          <img src="static/assets/img/foto7.webp" alt="Lifestyle" loading="lazy" decoding="async" class="w-full rounded-3xl object-cover shadow-xl shadow-purple-500/20" />
+          <img src="static/assets/img/foto3.webp" alt="Bastidores" loading="lazy" decoding="async" class="w-full rounded-3xl border-4 border-white object-cover shadow-xl shadow-pink-500/20" />
+      </div>
+      </div>
+    </section>
 
+    <section class="defer-section bg-gradient-to-b from-white via-[#fdf4ff] to-[#f1f5ff] py-16 px-6 md:px-12">
+      <div class="mx-auto max-w-6xl">
+        <div class="text-center" data-aos="fade-up">
+          <span class="text-sm font-semibold uppercase tracking-[0.3em] text-purple-600">Como entrego valor</span>
+          <h2 class="mt-4 text-3xl font-bold text-gray-900 md:text-4xl">Experiências que combinam estratégia, estética e comunidade</h2>
+          <p class="mt-4 text-lg text-gray-600">
+            Cada parceria recebe um plano sob medida. Entrego campanhas autênticas, consultorias inteligentes e experiências que se tornam cases.
+          </p>
+    </div>
+        <div class="mt-12 grid gap-8 md:grid-cols-3" data-aos="fade-up" data-aos-delay="100">
+          <article class="flex h-full flex-col justify-between rounded-3xl border border-white bg-white p-8 shadow-xl shadow-pink-500/5">
+            <div>
+              <div class="flex h-12 w-12 items-center justify-center rounded-full bg-pink-100 text-pink-600">
+                <i class="fa-solid fa-camera-retro"></i>
+      </div>
+              <h3 class="mt-6 text-2xl font-semibold text-gray-900">Campanhas Lifestyle 360º</h3>
+              <p class="mt-4 text-gray-600">Conceito, roteiro, produção e análise em entregas completas para feeds, reels, stories e eventos.</p>
+      </div>
+            <a
+              href="https://www.watechevoce.com.br"
+              target="_blank"
+              class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-pink-600 hover:underline"
+            >
+              Agendar briefing
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+          <article class="flex h-full flex-col justify-between rounded-3xl border border-white bg-white p-8 shadow-xl shadow-purple-500/5">
+            <div>
+              <div class="flex h-12 w-12 items-center justify-center rounded-full bg-purple-100 text-purple-600">
+                <i class="fa-solid fa-lightbulb"></i>
+    </div>
+              <h3 class="mt-6 text-2xl font-semibold text-gray-900">Consultoria & Media Kit Inteligente</h3>
+              <p class="mt-4 text-gray-600">Sessões estratégicas para posicionamento, funil de conteúdo, guidelines visuais e métricas acionáveis.</p>
+      </div>
+            <a
+              href="https://www.watechevoce.com.br"
+              target="_blank"
+              class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-purple-600 hover:underline"
+            >
+              Baixar media kit
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+          <article class="flex h-full flex-col justify-between rounded-3xl border border-white bg-white p-8 shadow-xl shadow-blue-500/5">
+            <div>
+              <div class="flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-blue-600">
+                <i class="fa-solid fa-plane-departure"></i>
+      </div>
+              <h3 class="mt-6 text-2xl font-semibold text-gray-900">Experiências ao Vivo & Coberturas</h3>
+              <p class="mt-4 text-gray-600">Viagens, eventos, lançamentos e ativações com narrativa em tempo real e relatórios completos.</p>
+    </div>
+            <a
+              href="https://www.watechevoce.com.br"
+              target="_blank"
+              class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:underline"
+            >
+              Criar experiência exclusiva
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+    </div>
+      </div>
+    </section>
+    <section class="defer-section bg-gray-900 py-16 px-6 text-white md:px-12">
+      <div class="mx-auto max-w-6xl">
+        <div class="flex flex-col gap-12 md:flex-row md:items-center md:justify-between">
+          <div data-aos="fade-right">
+            <span class="text-sm font-semibold uppercase tracking-[0.3em] text-teal-300">Resultados reais</span>
+            <h2 class="mt-4 text-3xl font-bold md:text-4xl">Números que contam histórias de impacto</h2>
+            <p class="mt-4 max-w-xl text-slate-200">
+              Trabalho com relatórios completos, KPIs claros e acompanhamento pós-campanha. O objetivo é transformar ideias em resultados mensuráveis.
+            </p>
+            <div class="mt-8 grid gap-4 md:grid-cols-2">
+              <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+                <p class="text-sm uppercase tracking-wide text-teal-200">Audiência</p>
+                <p class="mt-2 text-4xl font-bold">+320K</p>
+                <p class="mt-2 text-sm text-slate-300">Visualizações médias mensais nas principais plataformas</p>
+              </div>
+              <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+                <p class="text-sm uppercase tracking-wide text-teal-200">Conversão</p>
+                <p class="mt-2 text-4xl font-bold">2,4x</p>
+                <p class="mt-2 text-sm text-slate-300">Média de crescimento em leads após campanhas integradas</p>
+    </div>
+              <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+                <p class="text-sm uppercase tracking-wide text-teal-200">Comunidade</p>
+                <p class="mt-2 text-4xl font-bold">70%</p>
+                <p class="mt-2 text-sm text-slate-300">Seguidores engajados semanalmente via stories e lives</p>
+      </div>
+              <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+                <p class="text-sm uppercase tracking-wide text-teal-200">Campanhas</p>
+                <p class="mt-2 text-4xl font-bold">+40</p>
+                <p class="mt-2 text-sm text-slate-300">Projetos entregues com marcas nacionais e internacionais</p>
+    </div>
+  </div>
+  </div>
+          <div class="space-y-6" data-aos="fade-left">
+            <blockquote class="rounded-3xl border border-white/10 bg-white/10 p-8 backdrop-blur">
+              <p class="text-lg font-semibold text-white">
+                “A Watechina transformou nosso lançamento em movimento. Da ideação à mensuração, tudo foi impecável — superamos a meta de conversão em 180%.”
+              </p>
+              <footer class="mt-6 text-sm uppercase tracking-wide text-teal-200">CEO • Brand Partner X</footer>
+            </blockquote>
+            <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+              <p class="text-sm uppercase tracking-wide text-teal-200">Comunidade que confia</p>
+              <p class="mt-2 text-sm text-slate-200">
+                Pessoas que acompanham bastidores diários, respondem pesquisas, participam de lançamentos e experimentam produtos junto comigo.
+              </p>
+    </div>
+    </div>
+    </div>
   </div>
 </section>
 
-<!-- Script para ativar o vídeo ao clique -->
-<script>
-document.querySelectorAll('.video-container').forEach(container => {
-  container.addEventListener('click', () => {
-    const videoPlayer = container.querySelector('.video-player');
-    const playButton = container.querySelector('.play-btn');
-
-    if (videoPlayer && playButton) {
-      videoPlayer.classList.remove('hidden');
-      playButton.classList.add('hidden');
-    }
-  });
-});
-</script>
-
-  
-
-<!-- Seção de Instagram -->
-<section id="instagram-post" class="py-12 bg-white px-6 md:px-12">
-  <h2 class="text-3xl font-bold text-center mb-8" data-aos="fade-up">Confira nosso post no Instagram</h2>
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
-
-    <!-- Post 1 -->
-    <div class="insta-container relative rounded-xl shadow overflow-hidden cursor-pointer aspect-w-16 aspect-h-9" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
-      <blockquote class="instagram-media w-full" data-instgrm-permalink="https://www.instagram.com/reel/DI22kizqeNK/?utm_source=ig_embed" data-instgrm-version="14">
-        <a href="https://www.instagram.com/reel/DI22kizqeNK/?utm_source=ig_embed" target="_blank">Veja o post no Instagram</a>
-      </blockquote>
+    <section class="defer-section bg-slate-950 py-14 px-6 md:px-12">
+      <div class="mx-auto flex max-w-5xl flex-col items-center gap-8" data-aos="fade-up">
+        <h2 class="text-center text-3xl font-bold text-white md:text-4xl">Marque presença onde tudo acontece</h2>
+        <p class="max-w-2xl text-center text-slate-300">
+          Conteúdo consistente e adaptado para cada plataforma. Clique para conhecer mais histórias, campanhas e momentos.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-3xl text-[#00f5c7]">
+          <a href="https://www.watechevoce.com.br" target="_blank" class="transition-transform hover:-translate-y-1" aria-label="Instagram Watechina">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://www.watechevoce.com.br" target="_blank" class="transition-transform hover:-translate-y-1" aria-label="Facebook Watechina">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+          <a href="https://www.watechevoce.com.br" target="_blank" class="transition-transform hover:-translate-y-1" aria-label="X (Twitter) Watechina">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+          <a href="https://www.watechevoce.com.br" target="_blank" class="transition-transform hover:-translate-y-1" aria-label="TikTok Watechina">
+            <i class="fa-brands fa-tiktok"></i>
+          </a>
+          <a href="https://www.watechevoce.com.br" target="_blank" class="transition-transform hover:-translate-y-1" aria-label="YouTube Watechina">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+          <a href="https://www.watechevoce.com.br" target="_blank" class="transition-transform hover:-translate-y-1" aria-label="WhatsApp Watechina">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+    <section class="bg-white py-16 px-6 md:px-12">
+      <div class="mx-auto max-w-6xl">
+        <div class="text-center" data-aos="fade-up">
+          <span class="text-sm font-semibold uppercase tracking-[0.3em] text-pink-600">Conteúdo em movimento</span>
+          <h2 class="mt-4 text-3xl font-bold text-gray-900 md:text-4xl">Vídeos que convertem seguidores em fãs</h2>
+          <p class="mt-4 text-lg text-gray-600">Seleção de conteúdos que mesclam lifestyle, tech e experiências com marcas incríveis.</p>
+        </div>
+        <div class="mt-12 grid gap-8 lg:grid-cols-3">
+          <a
+            href="https://www.watechevoce.com.br?utm_source=portfolio&utm_medium=card&utm_campaign=youtube"
+            target="_blank"
+            class="group smooth-hover transform-gpu relative flex flex-col overflow-hidden rounded-3xl bg-slate-900 text-white shadow-lg shadow-pink-500/10 hover:-translate-y-1"
+          >
+            <div class="relative pb-[56.25%]">
+              <img src="https://img.youtube.com/vi/sc1RIX0RZBo/hqdefault.jpg" alt="Preview YouTube" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover opacity-80 transition-opacity duration-300 group-hover:opacity-100" />
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="flex h-14 w-14 items-center justify-center rounded-full bg-pink-600 text-white shadow-lg shadow-pink-500/40">
+                  <i class="fa-solid fa-play"></i>
+                </div>
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/10 to-transparent"></div>
+            </div>
+            <div class="space-y-3 px-6 pb-6 pt-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.3em] text-pink-200">YouTube</p>
+              <h3 class="text-2xl font-semibold">Planejamento de Conteúdo Inteligente</h3>
+              <p class="text-sm text-pink-100/80">Como construo campanhas multiplataforma com storytelling e dados.</p>
+            </div>
+          </a>
+          <a
+            href="https://www.watechevoce.com.br?utm_source=portfolio&utm_medium=card&utm_campaign=tiktok"
+            target="_blank"
+            class="group smooth-hover transform-gpu relative flex flex-col overflow-hidden rounded-3xl bg-slate-900 text-white shadow-lg shadow-purple-500/10 hover:-translate-y-1"
+          >
+            <div class="relative pb-[56.25%]">
+              <img src="static/assets/img/foto6.webp" alt="Preview TikTok" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover opacity-80 transition-opacity duration-300 group-hover:opacity-100" />
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="flex h-14 w-14 items-center justify-center rounded-full bg-purple-600 text-white shadow-lg shadow-purple-500/40">
+                  <i class="fa-brands fa-tiktok"></i>
     </div>
-
-    <!-- Post 2 -->
-    <div class="insta-container relative rounded-xl shadow overflow-hidden cursor-pointer aspect-w-16 aspect-h-9" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
-      <blockquote class="instagram-media w-full" data-instgrm-permalink="https://www.instagram.com/reel/DI2iXq2KdEk/?utm_source=ig_embed" data-instgrm-version="14">
-        <a href="https://www.instagram.com/reel/DI2iXq2KdEk/?utm_source=ig_embed" target="_blank">Veja o post no Instagram</a>
-      </blockquote>
+      </div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/10 to-transparent"></div>
     </div>
+            <div class="space-y-3 px-6 pb-6 pt-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.3em] text-purple-200">TikTok</p>
+              <h3 class="text-2xl font-semibold">Desafios que viram conexão</h3>
+              <p class="text-sm text-purple-100/80">Conteúdos rápidos com impacto — tendências e bastidores humanizados.</p>
+      </div>
+          </a>
+          <a
+            href="https://www.watechevoce.com.br?utm_source=portfolio&utm_medium=card&utm_campaign=instagram"
+            target="_blank"
+            class="group smooth-hover transform-gpu relative flex flex-col overflow-hidden rounded-3xl bg-slate-900 text-white shadow-lg shadow-blue-500/10 hover:-translate-y-1"
+          >
+            <div class="relative pb-[56.25%]">
+              <img src="static/assets/img/insta1.jpg" alt="Preview Instagram" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover opacity-80 transition-opacity duration-300 group-hover:opacity-100" />
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="flex h-14 w-14 items-center justify-center rounded-full bg-blue-500 text-white shadow-lg shadow-blue-500/40">
+                  <i class="fa-brands fa-instagram"></i>
+    </div>
+  </div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/10 to-transparent"></div>
+            </div>
+            <div class="space-y-3 px-6 pb-6 pt-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.3em] text-blue-200">Instagram</p>
+              <h3 class="text-2xl font-semibold">Reels que contam histórias</h3>
+              <p class="text-sm text-blue-100/80">Narrativas visuais que unem moda, viagem e tecnologia.</p>
+        </div>
+          </a>
+        </div>
+      </div>
+    </section>
+    <section class="defer-section bg-slate-50 py-16 px-6 md:px-12">
+      <div class="mx-auto max-w-6xl">
+        <div class="text-center" data-aos="fade-up">
+          <span class="text-sm font-semibold uppercase tracking-[0.3em] text-purple-600">Nos bastidores</span>
+          <h2 class="mt-4 text-3xl font-bold text-gray-900 md:text-4xl">Momentos recentes no Instagram</h2>
+          <p class="mt-4 text-lg text-gray-600">Stories, reels e bastidores que mostram Watechina em ação – clique para mergulhar no conteúdo completo.</p>
+        </div>
+        <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <article class="group smooth-hover transform-gpu relative overflow-hidden rounded-3xl border border-purple-100 bg-white shadow-lg shadow-purple-500/10 hover:-translate-y-1">
+            <img src="static/assets/img/insta1.jpg" alt="Preview de reel no rooftop" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
+            <div class="relative z-10 flex h-full flex-col justify-between p-8 text-white">
+              <div class="space-y-3">
+                <span class="inline-flex items-center gap-2 rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-white">
+                  <i class="fa-brands fa-instagram text-sm"></i>
+                  Reel
+                </span>
+                <h3 class="text-2xl font-semibold">Sunset, moda e briefing com a marca parceira.</h3>
+                <p class="text-sm text-white/80">Compartilhei como produzimos a campanha que apresenta a nova coleção de óculos eco friendly.</p>
+              </div>
+              <a href="https://www.watechevoce.com.br?utm_source=portfolio&utm_medium=card&utm_campaign=instagram_reel" target="_blank" class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-lg shadow-purple-500/30 transition-transform duration-300 group-hover:-translate-y-1">
+                Ver no Instagram
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </article>
 
+          <article class="group smooth-hover transform-gpu relative overflow-hidden rounded-3xl border border-pink-100 bg-white shadow-lg shadow-pink-500/10 hover:-translate-y-1">
+            <img src="static/assets/img/insta2.jpg" alt="Preview de backstage nos stories" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
+            <div class="relative z-10 flex h-full flex-col justify-between p-8 text-white">
+              <div class="space-y-3">
+                <span class="inline-flex items-center gap-2 rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-white">
+                  <i class="fa-brands fa-instagram text-sm"></i>
+                  Stories
+                </span>
+                <h3 class="text-2xl font-semibold">Dia de gravação com equipe reduzida e muita criatividade.</h3>
+                <p class="text-sm text-white/80">Mostrei o setup lean que uso para produzir conteúdo rápido mantendo estética premium.</p>
+              </div>
+              <a href="https://www.watechevoce.com.br?utm_source=portfolio&utm_medium=card&utm_campaign=instagram_stories" target="_blank" class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-lg shadow-pink-500/30 transition-transform duration-300 group-hover:-translate-y-1">
+                Ver stories salvos
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </article>
+
+          <article class="group smooth-hover transform-gpu relative overflow-hidden rounded-3xl border border-blue-100 bg-white shadow-lg shadow-blue-500/10 hover:-translate-y-1">
+            <img src="static/assets/img/foto4.webp" alt="Comunidade interagindo" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
+            <div class="relative z-10 flex h-full flex-col justify-between p-8 text-white">
+              <div class="space-y-3">
+                <span class="inline-flex items-center gap-2 rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-white">
+                  <i class="fa-brands fa-instagram text-sm"></i>
+                  Comunidade
+                </span>
+                <h3 class="text-2xl font-semibold">Perguntas & respostas com a galera da lista VIP.</h3>
+                <p class="text-sm text-white/80">Abordei bastidores da media kit season e mostrei relatórios de performance ao vivo.</p>
+              </div>
+              <a href="https://www.watechevoce.com.br?utm_source=portfolio&utm_medium=card&utm_campaign=instagram_comunidade" target="_blank" class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-lg shadow-blue-500/30 transition-transform duration-300 group-hover:-translate-y-1">
+                Ir para o perfil
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </article>
+        </div>
   </div>
 </section>
 
-<!-- Script para ativar embed Instagram -->
-<script async src="https://www.instagram.com/embed.js"></script>
+    <section class="relative overflow-hidden bg-white py-16 px-6 md:px-12">
+      <div class="absolute inset-0 bg-gradient-to-br from-pink-100 via-white to-blue-100 opacity-60"></div>
+      <div class="relative z-10 mx-auto grid max-w-6xl gap-12 md:grid-cols-2 md:items-center">
+        <div data-aos="fade-right">
+          <span class="text-sm font-semibold uppercase tracking-[0.3em] text-pink-600">Comunidade</span>
+          <h2 class="mt-4 text-3xl font-bold text-gray-900 md:text-4xl">Uma audiência ativa, curiosa e pronta para viver novas experiências</h2>
+          <p class="mt-4 text-lg text-gray-600">
+            Pessoas que amam lifestyle, inovação e autenticidade. Co-criamos juntos cada lançamento, respondemos feedbacks em tempo real e transformamos conteúdo em movimento cultural.
+          </p>
+          <ul class="mt-6 space-y-3 text-gray-700">
+            <li class="flex gap-3"><i class="fa-solid fa-circle-check text-pink-500"></i> 58% do público é formado por decisoras de compra entre 24-35 anos.</li>
+            <li class="flex gap-3"><i class="fa-solid fa-circle-check text-purple-500"></i> 3 em cada 5 campanhas geram novos clientes para as marcas parceiras.</li>
+            <li class="flex gap-3"><i class="fa-solid fa-circle-check text-blue-500"></i> Lives semanais com média de 1,2k participantes.</li>
+          </ul>
+    </div>
+        <div class="grid gap-6" data-aos="fade-left">
+          <div class="rounded-3xl border border-pink-200 bg-white/80 p-6 shadow-lg shadow-pink-500/10">
+            <h3 class="text-2xl font-semibold text-gray-900">Watechina Club</h3>
+            <p class="mt-3 text-sm text-gray-600">Uma lista VIP com conteúdos exclusivos, insights de tecnologia aplicada ao lifestyle e campanhas colaborativas.</p>
+            <a href="https://www.watechevoce.com.br?utm_source=portfolio&utm_medium=cta&utm_campaign=lista_vip" target="_blank" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-pink-600 hover:underline">
+              Entrar na lista VIP
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+    </div>
+          <div class="rounded-3xl border border-purple-200 bg-white/80 p-6 shadow-lg shadow-purple-500/10">
+            <h3 class="text-2xl font-semibold text-gray-900">Mentorias e consultorias</h3>
+            <p class="mt-3 text-sm text-gray-600">Encontros sob medida para influenciadores e marcas que desejam elevar posicionamento, estética e resultados.</p>
+            <a href="https://www.watechevoce.com.br?utm_source=portfolio&utm_medium=cta&utm_campaign=mentoria" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-purple-600 hover:underline">
+              Solicitar agenda
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+  </div>
+      </div>
+      </div>
+    </section>
 
-<!-- Instagram embed script -->
-<script async src="https://www.instagram.com/embed.js"></script>
-
-  
-  
-<!-- Patrocinadores -->
-<section class="py-12 px-6 md:px-12 text-center" data-aos="fade-up">
-    <h2 class="text-3xl font-bold mb-6" data-aos="fade-up" data-aos-delay="100">Marcas que estão comigo nessa jornada</h2>
-    <p class="text-lg mb-12 text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">Eu sou muito grata às empresas incríveis que acreditam no meu trabalho! São marcas que me acompanham e ajudam a tornar cada passo mais especial. Aqui estão alguns dos meus parceiros favoritos que você também pode conhecer!</p>
-    <div class="flex flex-wrap justify-center gap-6">
-      <!-- Patrocinador 1 -->
-      <div class="flex justify-center" data-aos="fade-up" data-aos-delay="300">
-        <img src="assets/img/parcerias.jpg" class="h-24 w-auto max-w-xs md:max-w-sm lg:max-w-md" alt="Patrocinador 1" />
-      </div>
-      <!-- Patrocinador 2 -->
-      <div class="flex justify-center" data-aos="fade-up" data-aos-delay="400">
-        <img src="assets/img/parcerias.jpg" class="h-24 w-auto max-w-xs md:max-w-sm lg:max-w-md" alt="Patrocinador 2" />
-      </div>
-      <!-- Patrocinador 3 -->
-      <div class="flex justify-center" data-aos="fade-up" data-aos-delay="500">
-        <img src="assets/img/parcerias.jpg" class="h-24 w-auto max-w-xs md:max-w-sm lg:max-w-md" alt="Patrocinador 3" />
-      </div>
-      <!-- Patrocinador 4 -->
-      <div class="flex justify-center" data-aos="fade-up" data-aos-delay="600">
-        <img src="assets/img/parcerias.jpg" class="h-24 w-auto max-w-xs md:max-w-sm lg:max-w-md" alt="Patrocinador 4" />
+    <section class="defer-section bg-gradient-to-r from-purple-600 via-pink-600 to-rose-500 py-16 px-6 text-white md:px-12">
+      <div class="mx-auto flex max-w-5xl flex-col items-center text-center" data-aos="fade-up">
+        <h2 class="text-3xl font-bold md:text-4xl">Vamos transformar sua próxima ideia em um case?</h2>
+        <p class="mt-4 max-w-3xl text-lg text-white/85">
+          Chegou a hora de conectar sua marca ao lifestyle que inspira, engaja e converte. Conte comigo para criar campanhas com alma e estratégia.
+        </p>
+        <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+          <a
+            href="https://www.watechevoce.com.br?utm_source=portfolio&utm_medium=cta&utm_campaign=cta_final"
+            class="inline-flex items-center gap-3 rounded-full bg-white px-8 py-3 text-base font-semibold text-purple-600 shadow-lg shadow-rose-500/30 transition-all hover:-translate-y-1"
+          >
+            <i class="fa-brands fa-whatsapp text-lg"></i>
+            Fale comigo agora
+          </a>
+          <a
+            href="https://www.watechevoce.com.br?utm_source=portfolio&utm_medium=cta&utm_campaign=media_kit"
+            target="_blank"
+            class="inline-flex items-center gap-3 rounded-full border border-white/60 px-8 py-3 text-base font-semibold text-white transition-all hover:-translate-y-1"
+          >
+            <i class="fa-solid fa-file-lines"></i>
+            Receber media kit
+          </a>
       </div>
     </div>
 </section>
 
-<!-- Call to Action -->
-<section class="bg-purple-600 text-white text-center py-10 px-6 md:px-12" data-aos="fade-up">
-  <h3 class="text-2xl font-bold mb-4" data-aos="fade-up" data-aos-delay="100">Que tal transformarmos suas ideias em algo extraordinário?</h3>
-  <p class="mb-6 max-w-3xl mx-auto text-lg" data-aos="fade-up" data-aos-delay="200">Se você está buscando inovar e transformar sua ideia em algo único, estou aqui para ajudar! Vamos juntos fazer do seu projeto um grande sucesso. Entre em contato e comece sua jornada de sucesso agora mesmo!</p>
-    <a href="https://wa.me/5522999741139" class="bg-white text-purple-600 font-semibold py-2 px-6 rounded-full shadow-lg hover:bg-gray-100 transition" data-aos="fade-up" data-aos-delay="300">
-      Fale comigo
+    <button
+      id="scrollToTop"
+      class="fixed bottom-28 right-5 z-[9998] inline-flex h-12 w-12 items-center justify-center rounded-full bg-slate-900/80 text-white shadow-lg shadow-slate-900/40 transition-all hover:-translate-y-1 hover:bg-slate-900"
+      aria-label="Voltar ao topo"
+    >
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <a
+      href="https://www.watechevoce.com.br?utm_source=portfolio&utm_medium=cta&utm_campaign=whatsapp_button"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="fixed bottom-5 right-5 z-[9999] rounded-full p-3 shadow-wa animate-rotateButton transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-wa focus:ring-offset-2"
+      style="background: #00f5c7"
+      aria-label="Fale conosco no WhatsApp"
+    >
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Ícone do WhatsApp" class="h-10 w-10" loading="lazy" />
     </a>
-</section>
 
-    <!-- Botão de WhatsApp flutuante com ícone simples e sem borda -->
-    <a href="https://wa.me/5522999741139" target="_blank" class="fixed bottom-4 right-4 bg-green-500 text-white p-3 shadow-lg hover:bg-green-600 transition-all duration-300 rounded-full">
-      <i class="fab fa-whatsapp text-3xl"></i>
-  </a>
-
-<footer class="bg-gray-800 text-white text-center py-4 mt-auto relative">
-  <p class="text-sm">
-    Desenvolvido por 
-    <a href="https://github.com/WallaceMamuth" target="_blank" class="text-pink-400 hover:text-pink-300 transition duration-300">
-      Wallace C Guedes
-    </a>
-  </p>
-  <p class="text-sm mt-2">
-    © 2025 WATech. Todos os direitos reservados.
-  </p>
-
-  <!-- Botão Volte ao Topo -->
-  <button id="scrollToTop" class="bg-pink-500 text-white rounded-full p-3 absolute bottom-4 right-4 opacity-80 hover:opacity-100 transition-opacity duration-300">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7-7-7 7"></path>
-    </svg>
-  </button>
+    <footer class="relative bg-gray-900 py-10 text-white">
+      <div class="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 text-center">
+        <div class="flex flex-wrap justify-center gap-4 text-sm text-slate-400">
+          <span>© 2025 Watechina</span>
+          <span>Todos os direitos reservados</span>
+          <a href="https://www.watechevoce.com.br?utm_source=portfolio&utm_medium=cta&utm_campaign=footer_media_kit" target="_blank" class="text-pink-300 transition-colors hover:text-pink-200">Media kit</a>
+          <a href="mailto:contato@watechevoce.com.br" class="text-pink-300 transition-colors hover:text-pink-200">contato@watechevoce.com.br</a>
+        </div>
+        <p class="text-xs text-slate-500">
+          Desenvolvido em colaboração com a equipe Watechina para posicionar marcas e experiências no universo digital.
+        </p>
+        
+      </div>
 </footer>
+
 <script>
-  // Função para rolar até o topo quando o botão for clicado
-  document.getElementById("scrollToTop").addEventListener("click", function() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth' // Rolagem suave para o topo
-    });
-  });
-</script>
+      document.getElementById('scrollToTop').addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
 
-  
-
-  <script>
     lucide.createIcons();
   </script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init();
+      AOS.init({
+        duration: 800,
+        once: true,
+      });
   </script>
-  
 </body>
 </html>
